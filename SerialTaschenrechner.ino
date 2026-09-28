@@ -1,11 +1,11 @@
 void setup() {
   Serial.begin(9600);
-  while (!Serial) { ; } // Warten auf serielle Verbindung
-  Serial.println("--- Arduino Taschenrechner ---");
+  while (!Serial) { ; }
+  Serial.println("--- Taschenrechner ---");
 }
 
 void loop() {
-  // 1. Erste Zahl einlesen
+  // 1. Erste Zahl
   Serial.println("Gib die erste Zahl ein:");
   while (Serial.available() == 0) {}
   float num1 = Serial.parseFloat();
@@ -13,7 +13,7 @@ void loop() {
   Serial.print("> Erste Zahl: ");
   Serial.println(num1);
 
-  // 2. Operator einlesen
+  // 2. Operator
   Serial.println("Gib den Operator ein (+, -, *, /):");
   while (Serial.available() == 0) {}
   char op = Serial.read();
@@ -21,7 +21,7 @@ void loop() {
   Serial.print("> Operator: ");
   Serial.println(op);
 
-  // 3. Zweite Zahl einlesen
+  // 3. Zweite Zahl
   Serial.println("Gib die zweite Zahl ein:");
   while (Serial.available() == 0) {}
   float num2 = Serial.parseFloat();
@@ -55,11 +55,12 @@ void loop() {
       break;
   }
 
-  Serial.println("--------------------------------\n");
+  Serial.println("--------------------------------");
+  Serial.println("");
   delay(1000);
 }
 
-// Hilfsfunktion zum Leeren des Speichers (entfernt verbleibende Enter-Tasten/Zeilenumbrüche)
+
 void clearSerialBuffer() {
   delay(50);
   while (Serial.available() > 0) {
